@@ -1,0 +1,169 @@
+/* Hero background and glassmorphism */
+.academics-hero-bg {
+  background: linear-gradient(135deg, #d3e0f3 0%, #e0e7ef 100%);
+  border-radius: 18px;
+  box-shadow: 0 6px 24px 0 rgba(23,70,162,0.10), 0 1.5px 6px 0 rgba(0,0,0,0.04);
+  padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+  margin: 0 auto 2.5rem auto;
+  max-width: 1200px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.academics-hero-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #0a2e6c;
+  text-shadow: 0 4px 16px #7fd6c0, 0 2px 8px #0a2e6c33;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
+}
+.academics-hero-highlight {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0a2e6c;
+  text-shadow: 0 4px 16px #7fd6c0, 0 2px 8px #0a2e6c33;
+  margin-bottom: 1.2rem;
+  display: block;
+  letter-spacing: 0.01em;
+}
+.academics-hero-desc {
+  font-size: 1.18rem;
+  color: #1a1a1a;
+  margin-bottom: 2.2rem;
+  font-weight: 500;
+}
+.academics-hero-details {
+  margin-bottom: 1.5rem;
+}
+.academics-hero-details .dte {
+  color: #ff9800;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.01em;
+}
+.academics-hero-details .dte-code {
+  color: #0a2e6c;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.01em;
+}
+.academics-hero-details .college {
+  color: #0a2e6c;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+}
+.academics-hero-details .location {
+  color: #0a2e6c;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+}
+.academics-hero-details .autonomous {
+  color: #0a2e6c;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+}
+.academics-hero-details .approved {
+  color: #111;
+  font-weight: 700;
+  font-size: 1.08rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.academics-hero-icons {
+  display: flex;
+  justify-content: center;
+  gap: 3.5rem;
+  margin-top: 2.2rem;
+  flex-wrap: wrap;
+}
+.academics-hero-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2.2rem;
+  min-width: 110px;
+}
+.academics-hero-icon-label {
+  margin-top: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.icon-wifi { color: #ff9800; font-weight: 700; }
+.icon-hostel { color: #00bfae; font-weight: 700; }
+.icon-staff { color: #0a2e6c; font-weight: 700; }
+.icon-placement { color: #ff9800; font-weight: 700; }
+.icon-toppers { color: #00bfae; font-weight: 700; }
+.academics-hero-icon-label.icon-wifi { color: #ff9800; }
+.academics-hero-icon-label.icon-hostel { color: #00bfae; }
+.academics-hero-icon-label.icon-staff { color: #0a2e6c; }
+.academics-hero-icon-label.icon-placement { color: #ff9800; }
+.academics-hero-icon-label.icon-toppers { color: #00bfae; }
+
+@media (max-width: 700px) {
+  .academics-hero-title, .academics-hero-highlight { font-size: 1.3rem; }
+  .academics-hero-bg { padding: 1.2rem 0.5rem; }
+  .academics-hero-icons { gap: 1.2rem; }
+  .academics-hero-icon { font-size: 1.3rem; min-width: 70px; }
+}
+/* Smooth floating decorative images for AcademicsInfo */
+.academics-container {
+  position: relative; /* container for absolutely-positioned floating images */
+}
+
+.floating {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform, opacity;
+  opacity: 0.95;
+  filter: drop-shadow(0 6px 14px rgba(23, 70, 162, 0.12));
+  display: block;
+  transform-origin: center center;
+}
+
+/* main float keyframes: subtle vertical + horizontal drift with tiny rotation */
+@keyframes floatDrift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0.0deg);
+  }
+  25% {
+    transform: translate3d(6px, -10px, 0) rotate(1.2deg);
+  }
+  50% {
+    transform: translate3d(0px, -18px, 0) rotate(0.6deg);
+  }
+  75% {
+    transform: translate3d(-6px, -10px, 0) rotate(-0.8deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0.0deg);
+  }
+}
+
+/* variants to create a natural, unsynchronized feel */
+.float-slower { animation: floatDrift 12s cubic-bezier(.25,.46,.45,.94) infinite; }
+.float-slow   { animation: floatDrift 9s  cubic-bezier(.25,.46,.45,.94) infinite; }
+.float-medium { animation: floatDrift 6.5s ease-in-out infinite; }
+.float-fast   { animation: floatDrift 5s ease-in-out infinite; }
+
+/* subtle scale pulsing for variety */
+.float-pulse { animation-name: floatDrift; }
+
+/* make sure images are responsive */
+.floating img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Optional: reduce motion for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .float-slower, .float-slow, .float-medium, .float-fast { animation: none; transform: translate3d(0,0,0); }
+}
